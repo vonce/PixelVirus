@@ -1,0 +1,63 @@
+<canvas id="ctx" width="500" height="500" style="border:1px solid #000000;"></canvas>
+<script>
+var ctx = document.getElementById("ctx").getContext("2d");
+
+var board = array2D(500,500);
+
+//console.log(board);
+
+var x, y;
+
+board[0][0] = 0;
+board[0][499] = 1;
+board[499][0] = 2;
+board[499][499] = 3;
+
+setInterval(canvasUpdate, 50);
+
+function update()
+{
+
+}
+
+function canvasUpdate()
+{
+  for(y = 0; y<500; ++y)
+  {
+    for(x = 0; x<500; ++x)
+    {
+      if (board[x][y] == 0)
+      {
+        ctx.fillStyle = 'red';
+        ctx.fillRect(x,y,1,1);
+      }
+      if (board[x][y] == 1)
+      {
+        ctx.fillStyle = 'blue';
+        ctx.fillRect(x,y,1,1);
+      }
+      if (board[x][y] == 2)
+      {
+        ctx.fillStyle = 'green';
+        ctx.fillRect(x,y,1,1);
+      }
+      if (board[x][y] == 3)
+      {
+        ctx.fillStyle = 'purple';
+        ctx.fillRect(x,y,1,1);
+      }
+    }
+  }
+}
+
+function array2D(xdimensions,ydimensions)
+{
+  var arr = new Array(xdimensions);
+  for (var i=0; i<xdimensions;i++)
+  {
+    arr[i] = new Array(ydimensions);
+  }
+  return arr;
+}
+
+</script>
